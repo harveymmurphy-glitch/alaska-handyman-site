@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { createRoot } from "react-dom/client";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
@@ -929,7 +928,7 @@ function Footer({ reduced, systemReduced, toggleMotion }) {
     </footer>
   );
 }
-function App() {
+export default function App() {
   const root = useRef(null),
     systemReduced = useMedia("(prefers-reduced-motion:reduce)"),
     [motionOff, setMotionOff] = useState(false),
@@ -1094,8 +1093,3 @@ function App() {
     </div>
   );
 }
-createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-);
