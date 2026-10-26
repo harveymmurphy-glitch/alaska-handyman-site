@@ -1,0 +1,32 @@
+@media (max-width: 900px) and (prefers-reduced-motion: no-preference) {
+  .mobile-motion-active .project,
+  .mobile-motion-active .project-comparison {
+    perspective: 1100px;
+  }
+
+  .mobile-motion-active .steps article {
+    position: relative;
+  }
+
+  .mobile-motion-active .steps article::before {
+    content: "";
+    position: absolute;
+    inset: -1px 0 auto;
+    height: 1px;
+    background: linear-gradient(90deg, #d5e6df, #7faeb2);
+    transform: scaleX(var(--step-progress, 0));
+    transform-origin: left;
+    pointer-events: none;
+  }
+
+  .mobile-motion-active .is-touch-pressed {
+    filter: brightness(0.9);
+  }
+
+  .mobile-motion-active .button,
+  .mobile-motion-active .service h3 button,
+  .mobile-motion-active .faq-item h3 button,
+  .mobile-motion-active .mobile-contact a {
+    transition: background-color 0.25s, filter 0.18s;
+  }
+}

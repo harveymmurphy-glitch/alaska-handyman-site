@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
+import HomeWorld from "./HomeWorld";
+import { setupMobileMotion } from "./mobile-motion";
 import {
   ArrowUpRight,
   ArrowDown,
@@ -130,6 +132,7 @@ function Header() {
             if (e.target.closest("a")) setOpen(false);
           }}
         >
+          <a href="#home-world">Explore in 3D</a>
           <a href="#services">Services</a>
           <a href="#our-work">Our work</a>
           <a href="#approach">Our approach</a>
@@ -281,11 +284,11 @@ function Hero({ reduceMotion }) {
         </div>
       </div>
       <div className="hero-foot page-width">
-        <a className="explore-link" href="#our-work">
+        <a className="explore-link" href="#home-world">
           <span className="circle-arrow">
             <ArrowDown size={20} />
           </span>
-          See what’s possible
+          Explore a home in 3D
         </a>
         <span className="hero-foot-note">
           Practical skills. A personal touch.
@@ -438,8 +441,19 @@ const projects = [
     tags: ["Finish carpentry", "Accent walls", "Fireplace surround"],
   },
 ];
-function Comparison({ project: p }) {
+function Comparison({ project: p, reduceMotion }) {
   const [v, set] = useState(48);
+  const wipe = useRef(null);
+  useEffect(() => () => wipe.current?.kill(), [reduceMotion]);
+  const moveTo = (value) => {
+    wipe.current?.kill();
+    if (reduceMotion) { set(value); return; }
+    const progress = { value: v };
+    wipe.current = gsap.to(progress, {
+      value, duration: 0.75, ease: "power3.inOut",
+      onUpdate: () => set(Math.round(progress.value)),
+    });
+  };
   return (
     <div className="project-comparison">
       <div className="comparison" style={{ "--split": `${v}%` }}>
@@ -481,7 +495,7 @@ function Comparison({ project: p }) {
           min="0"
           max="100"
           value={v}
-          onChange={(e) => set(Number(e.target.value))}
+          onChange={(e) => { wipe.current?.kill(); set(Number(e.target.value)); }}
           aria-label={`Compare ${p.room}`}
           aria-valuetext={`${v}% before and ${100 - v}% after`}
         />
@@ -494,18 +508,18 @@ function Comparison({ project: p }) {
         <span>Original space → Finished space</span>
         <div>
           <button
-            onClick={() => set(100)}
+            onClick={() => moveTo(100)}
             aria-label={`Show before: ${p.room}`}
           >
             Before
           </button>
           <span>/</span>
-          <button onClick={() => set(0)} aria-label={`Show after: ${p.room}`}>
+          <button onClick={() => moveTo(0)} aria-label={`Show after: ${p.room}`}>
             After
           </button>
           <span>/</span>
           <button
-            onClick={() => set(50)}
+            onClick={() => moveTo(50)}
             aria-label={`Compare both: ${p.room}`}
           >
             Compare
@@ -515,7 +529,7 @@ function Comparison({ project: p }) {
     </div>
   );
 }
-function Work() {
+function Work({ reduceMotion }) {
   return (
     <section className="work-section" id="our-work">
       <div className="page-width">
@@ -555,7 +569,7 @@ function Work() {
                 <ArrowUpRight size={26} />
               </a>
             </div>
-            <Comparison project={p} />
+            <Comparison project={p} reduceMotion={reduceMotion} />
           </article>
         ))}
       </div>
@@ -939,7 +953,7 @@ export default function App() {
     const lenis = new Lenis({
         lerp: 0.085,
         smoothWheel: true,
-        anchors: { offset: -95 },
+        anchors: true,
       }),
       tick = (t) => lenis.raf(t * 1000);
     lenis.on("scroll", ScrollTrigger.update);
@@ -968,6 +982,13 @@ export default function App() {
         scrollTrigger: { start: 0, end: "max", scrub: 0.3 },
       });
       mm.add("(min-width:901px)", () => {
+        gsap.from(".steps article", {
+          y: 22,
+          autoAlpha: 0,
+          stagger: 0.12,
+          duration: 0.8,
+          scrollTrigger: { trigger: ".steps", start: "top 85%", once: true },
+        });
         gsap.to(".hero-film", {
           yPercent: 15,
           ease: "none",
@@ -1038,14 +1059,8 @@ export default function App() {
           scrollTrigger: { trigger: f, start: "top 90%", once: true },
         }),
       );
-      gsap.from(".steps article", {
-        y: 22,
-        autoAlpha: 0,
-        stagger: 0.12,
-        duration: 0.8,
-        scrollTrigger: { trigger: ".steps", start: "top 85%", once: true },
-      });
     }, root);
+    const stopMobile = setupMobileMotion(root.current);
     const ro = new ResizeObserver(() => ScrollTrigger.refresh());
     ro.observe(root.current.querySelector("main"));
     let alive = true;
@@ -1055,6 +1070,7 @@ export default function App() {
     return () => {
       alive = false;
       ro.disconnect();
+      stopMobile();
       mm.revert();
       ctx.revert();
       gsap.ticker.remove(tick);
@@ -1062,16 +1078,17 @@ export default function App() {
     };
   }, [reduced]);
   return (
-    <div id="home" ref={root}>
+    <div id="home" ref={root} data-reduced-motion={reduced}>
       <a className="skip-link" href="#main">
         Skip to content
       </a>
       <Header />
       <main id="main">
         <Hero reduceMotion={reduced} />
+        <HomeWorld reduceMotion={reduced} chooseService={setService} />
         <Introduction />
         <Services chooseService={setService} reduceMotion={reduced} />
-        <Work />
+        <Work reduceMotion={reduced} />
         <Approach reduceMotion={reduced} />
         <FAQ />
         <Contact service={service} setService={setService} />
