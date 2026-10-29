@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+﻿﻿﻿﻿import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
@@ -31,40 +31,112 @@ import "lenis/dist/lenis.css";
 import "./redesign.css";
 
 gsap.registerPlugin(ScrollTrigger);
-const PHONE = "tel:+19077448725",
-  EMAIL = "alaskahandymanservices907@gmail.com";
+const PHONE = "tel:+19078915505",
+  EMAIL = "info@arctichandymansevices.com";
 const services = [
   {
-    title: "Repairs & maintenance",
+    title: "Bathroom remodeling",
+    icon: House,
+    lead: "A bathroom that works beautifully — and feels brand new.",
+    text: "Whether it's a vanity refresh, a full tile overhaul or a new bathtub, we plan bathroom renovations around what you actually use every day. We'll help you choose finishes that hold up to moisture and look great long-term.",
+    tasks: ["Vanity & cabinet installation", "Faucets & drain upgrades", "Bathtub replacement", "Mosaic & ceramic tile", "Vinyl bathroom floors", "Mirror & lighting fixtures"],
+    photo: "after",
+  },
+  {
+    title: "Kitchen remodeling",
+    icon: House,
+    lead: "Make more of the heart of your home.",
+    text: "From cabinet hardware and countertop upgrades to a fully reimagined layout, we help you plan kitchen renovations that improve flow, storage and daily comfort. Practical decisions, clean finishes, lasting results.",
+    tasks: ["Cabinet hardware & pulls", "Countertop installation", "Backsplash tile", "Kitchen sink & faucet", "Appliance fit-out", "Storage & shelving"],
+    photo: "craft-detail",
+  },
+  {
+    title: "Flooring installation",
+    icon: Hammer,
+    lead: "A fresh foundation for every room in your home.",
+    text: "Replace worn or dated flooring with vinyl plank, vinyl sheet or luxury vinyl tile. We handle subfloor prep, transitions, trim and cleanup so the final result is clean, level and built to last.",
+    tasks: ["Vinyl plank (LVP)", "Vinyl sheet installation", "Luxury vinyl tile (LVT)", "Subfloor preparation", "Baseboards & transitions", "Flooring removal & disposal"],
+    photo: "after1",
+  },
+  {
+    title: "Drywall services",
     icon: Wrench,
-    lead: "Doors that stick. Trim that’s tired. The list that keeps growing.",
-    text: "Bring us your repair list. We’ll talk through the work, the materials and what makes sense to tackle together.",
-    tasks: ["Doors & hardware", "General home repairs", "Home punch lists"],
+    lead: "Smooth walls start with sound preparation.",
+    text: "Drywall that's properly hung, taped and finished makes every paint job look better. We handle new installations, water-damaged panels, hole repairs and the critical tape-and-mud stages that determine your final finish.",
+    tasks: ["New drywall installation", "Water damage repair", "Hole & crack patching", "Tape, mud & skim coat", "Texture matching", "Paint-ready finishing"],
     photo: "workshop",
   },
   {
-    title: "Painting & drywall",
+    title: "Painting services",
     icon: PaintRoller,
-    lead: "Fresh walls. Clean edges. A room that feels new again.",
-    text: "From patching damaged walls to refreshing the finish, share your space and the look you have in mind.",
-    tasks: ["Drywall patching", "Interior painting", "Surface preparation"],
+    lead: "Refresh your space, inside and out.",
+    text: "Interior and exterior painting done with proper prep — surfaces cleaned, patched, primed and finished with care. We also handle fence staining and deck coatings, matched to the material and the Anchorage climate.",
+    tasks: ["Interior walls & ceilings", "Exterior siding & trim", "Cabinet painting", "Fence & deck staining", "Primer & prep work", "Trim & accent painting"],
     photo: "after1",
   },
   {
     title: "Carpentry & trim",
     icon: Hammer,
-    lead: "The details you notice. The difference you feel.",
-    text: "Explore trim, shelving and custom details that make the most of your space. Turn the idea into a practical plan.",
-    tasks: ["Trim & molding", "Shelving", "Feature walls"],
+    lead: "Thoughtful woodwork. Lasting character.",
+    text: "Finish carpentry and trim work that ties a room together — baseboards, door casings, crown moulding and built-in shelving. We also repair sticking doors and windows, and build custom woodwork for specific spaces.",
+    tasks: ["Baseboards & door casings", "Crown moulding", "Built-in shelving", "Door & window repairs", "Custom woodwork", "Trim replacement"],
     photo: "craft-detail",
   },
   {
-    title: "Room improvements",
-    icon: House,
-    lead: "Rework the room. Keep the place you call home.",
-    text: "A bathroom refresh or a living room update starts with a clear scope. Tell us what you want to change.",
-    tasks: ["Bathroom refreshes", "Living room updates", "Finish upgrades"],
+    title: "Deck services",
+    icon: Hammer,
+    lead: "Make the most of your outdoor space.",
+    text: "Decks in Alaska take a beating from freeze-thaw cycles, UV exposure and moisture. We assess what your deck actually needs — whether that's a board replacement, structural repairs, a fresh coat of stain or a full remodel.",
+    tasks: ["Deck board replacement", "Structural repairs", "Deck staining & sealing", "Railing repairs & replacement", "Post & beam repairs", "Full deck remodeling"],
+    photo: "workshop",
+  },
+  {
+    title: "Repairs & maintenance",
+    icon: Wrench,
+    lead: "Get the growing to-do list moving.",
+    text: "Bring your list. Home repairs, fixture swaps, furniture and playground assembly, caulking, weatherstripping — the everyday work that keeps a home in good shape. We'll help you prioritize and plan the work together.",
+    tasks: ["General home repairs", "Fixture installation & swaps", "Furniture assembly", "Playground & equipment assembly", "Caulking & weatherstripping", "Handyman punch lists"],
+    photo: "workshop",
+  },
+  {
+    title: "Plumbing repairs",
+    icon: Wrench,
+    lead: "Take care of the fixtures you rely on every day.",
+    text: "Faucet replacements, drain repairs, shower panel installs and fixture upgrades handled with care. For each project we confirm scope and let you know if a licensed plumber is required before any work begins.",
+    tasks: ["Faucet replacement", "Drain & trap repairs", "Shower panel installation", "Toilet repairs & replacement", "Shut-off valve replacement", "Under-sink work"],
     photo: "after",
+  },
+  {
+    title: "Lighting & fans",
+    icon: House,
+    lead: "Make your space brighter and more comfortable.",
+    text: "Swap outdated fixtures for ceiling fans, pendants, recessed lights or exterior fixtures. We confirm applicable licensing and project requirements before work begins so there are no surprises.",
+    tasks: ["Ceiling fan installation", "Light fixture replacement", "Exterior light fixtures", "Under-cabinet lighting", "Dimmer & switch upgrades", "Minor electrical improvements"],
+    photo: "after1",
+  },
+  {
+    title: "Roof & gutter services",
+    icon: House,
+    lead: "Attention to your home’s first line of defence.",
+    text: "Roof repairs, maintenance and gutter cleaning to protect your home from the Alaskan elements. Access, suitability and any required qualifications are confirmed for each project before scheduling.",
+    tasks: ["Roof shingle repair", "Flashing repairs", "Roof maintenance inspection", "Gutter cleaning & flushing", "Gutter bracket & seal repair", "Ice dam prevention prep"],
+    photo: "workshop",
+  },
+  {
+    title: "Property maintenance",
+    icon: Wrench,
+    lead: "Practical, ongoing care for homes and businesses.",
+    text: "Coordinate scheduled or on-call maintenance for residential and commercial properties in Anchorage. Ideal for landlords, property managers and business owners who need reliable, consistent upkeep.",
+    tasks: ["Residential property maintenance", "Commercial property upkeep", "Seasonal maintenance plans", "Tenant turnover repairs", "Inspection & punch list work", "On-call repair service"],
+    photo: "workshop",
+  },
+  {
+    title: "Exterior cleaning",
+    icon: Wrench,
+    lead: "Give outdoor surfaces a clean start.",
+    text: "Pressure washing for siding, driveways, walkways, decks and fences. The right pressure and technique for each surface — nothing blasted that shouldn’t be, nothing left behind that should be gone.",
+    tasks: ["Siding pressure washing", "Driveway & walkway cleaning", "Deck & fence washing", "Concrete surface cleaning", "Mold & mildew removal", "Pre-paint surface prep"],
+    photo: "workshop",
   },
 ];
 function useMedia(query) {
@@ -82,13 +154,13 @@ function Brand() {
     <a
       href="#home"
       className="brand"
-      aria-label="Alaska Handyman Services home"
+      aria-label="Arctic Handyman Services LLC home"
     >
       <span className="brand-symbol">
-        <img src="/assets/favicon.png" width="90" height="90" alt="" />
+        <img src="/assets/arctic-mark.svg" width="90" height="90" alt="" />
       </span>
       <span className="brand-name">
-        ALASKA<span>Handyman Services</span>
+        ARCTIC<span>Handyman Services LLC</span>
       </span>
     </a>
   );
@@ -143,7 +215,7 @@ function Header() {
         <div className="header-actions">
           <a className="header-phone" href={PHONE}>
             <Phone size={14} />
-            (907) 744-8725
+            (907) 891-5505
           </a>
           <a href="#contact" className="header-cta">
             Let’s talk <ArrowUpRight size={17} />
@@ -261,7 +333,7 @@ function Hero({ reduceMotion }) {
       <div className="hero-shade" />
       <div className="hero-content page-width">
         <p className="hero-location">
-          <span>✳</span> Home repairs & improvements in Alaska
+          <span>✳</span> Home & business improvements in Anchorage
         </p>
         <h1 id="hero-title">
           <span className="mask">
@@ -294,7 +366,7 @@ function Hero({ reduceMotion }) {
           Practical skills. A personal touch.
         </span>
         <span className="hero-place">
-          Alaska Handyman Services <span>907</span>
+          Arctic Handyman Services LLC <span>907</span>
         </span>
       </div>
       <div className="hero-vertical" aria-hidden="true">
@@ -320,9 +392,11 @@ function Introduction() {
         </h2>
         <div className="intro-description">
           <p>
-            Paint, drywall, carpentry and the repairs that never quite leave
-            your list. Alaska Handyman Services helps you take the next step
-            with a clear plan for your space.
+            From bathroom and kitchen remodeling to flooring, painting,
+            drywall and everyday repairs, Kostiantyn and Arctic Handyman
+            Services LLC give Anchorage homeowners and businesses a reliable
+            partner for every stage of a project — from the first idea to
+            the finished room.
           </p>
           <a href="#services" className="text-link">
             Find your service <ArrowDown size={18} />
@@ -333,26 +407,18 @@ function Introduction() {
   );
 }
 function Services({ chooseService, reduceMotion }) {
-  const [active, setActive] = useState(0),
-    image = useRef(null),
-    reduced = reduceMotion;
-  useEffect(() => {
-    if (!reduced) {
-      const t = gsap.fromTo(
-        image.current,
-        { opacity: 0.25, scale: 1.035 },
-        { opacity: 1, scale: 1, duration: 0.65, ease: "power2.out" },
-      );
-      return () => t.kill();
-    }
-  }, [active, reduced]);
-  const s = services[active];
+  const [active, setActive] = useState(0);
+  const [preview, setPreview] = useState(0);
+  const toggleService = (index) => {
+    setActive((current) => current === index ? null : index);
+    if (active !== index) setPreview([2, 3, 4, 5].includes(index) ? 1 : 0);
+  };
   return (
     <section className="services-section" id="services">
       <div className="page-width">
         <div className="section-top">
           <span className="small-label">What needs doing?</span>
-          <p>Small repairs to room transformations.</p>
+          <p>Residential & commercial · Anchorage, Alaska</p>
         </div>
         <div className="services-layout">
           <div className="service-list">
@@ -363,7 +429,7 @@ function Services({ chooseService, reduceMotion }) {
               >
                 <h3>
                   <button
-                    onClick={() => setActive(i)}
+                    onClick={() => toggleService(i)}
                     aria-expanded={active === i}
                     aria-controls={`service-panel-${i}`}
                   >
@@ -396,26 +462,13 @@ function Services({ chooseService, reduceMotion }) {
               </article>
             ))}
           </div>
-          <div className="service-photo">
-            <img
-              ref={image}
-              src={`/assets/${s.photo}.webp`}
-              alt={
-                active === 0 || active === 2
-                  ? "Careful woodworking at a workshop bench"
-                  : active === 1
-                    ? "Refreshed fireplace and living room"
-                    : "Bathroom with updated cabinetry"
-              }
-              width="900"
-              height="1000"
-              loading="lazy"
-            />
-            <span className="photo-note">
-              <s.icon size={20} strokeWidth={1.4} />
-              From the first detail to the final finish.
-            </span>
-          </div>
+          <aside className="service-photo" aria-label="Service project comparison">
+            <Comparison key={preview} project={projects[preview]} reduceMotion={reduceMotion} labelPrefix="Services preview: " />
+            <div className="photo-note">
+              <Hammer size={18} strokeWidth={1.4} />
+              <span>From the first detail to the final finish.<small>Project example: {projects[preview].room}</small></span>
+            </div>
+          </aside>
         </div>
       </div>
     </section>
@@ -428,8 +481,15 @@ const projects = [
     room: "The bathroom refresh",
     before: "before",
     after: "after",
-    text: "A dated vanity becomes a cleaner, brighter space with dark cabinetry, new fixtures and updated finishes.",
-    tags: ["Cabinet finishes", "Fixtures", "Room refresh"],
+    eyebrow: "Bathroom remodel · Anchorage",
+    headline: "A dated vanity replaced with dark cabinetry, new fixtures and a floor that finally feels intentional.",
+    text: "The original bathroom had the bones — a reasonable layout, decent light — but nothing that made it feel finished. Outdated cabinetry, worn fixtures and mismatched tile gave it that perpetually 'almost done' quality. We started with the vanity: swapped it for a dark-finished cabinet unit with brushed hardware and an undermount basin. New faucets, a framed mirror and updated lighting transformed the focal wall. Vinyl plank flooring replaced the old tile — warmer underfoot and far easier to maintain. The result is a bathroom that looks considered, clean and deliberate.",
+    stats: [
+      { value: "4", label: "days on site" },
+      { value: "3", label: "trades coordinated" },
+      { value: "100%", label: "material sourcing handled" },
+    ],
+    tags: ["Vanity installation", "Cabinet finishes", "Fixture upgrades", "Vinyl flooring", "Mirror & lighting", "Room refresh"],
   },
   {
     id: "living",
@@ -437,15 +497,24 @@ const projects = [
     room: "The living room transformation",
     before: "before1",
     after: "after1",
-    text: "A detailed fireplace surround and geometric accent walls give this living room a completely different presence.",
-    tags: ["Finish carpentry", "Accent walls", "Fireplace surround"],
+    eyebrow: "Finish carpentry & feature walls · Anchorage",
+    headline: "Geometric accent walls and a full fireplace surround gave this living room a presence it never had.",
+    text: "The living room was functional but flat — plain painted walls, an unfinished fireplace opening and no real focal point. The homeowner had a clear vision: something architectural, something with depth. We built a floor-to-ceiling fireplace surround with inset panelling and a thick mantel shelf, then carried the geometric wall treatment across the adjacent wall in a complementary pattern. Paint tied it together: deep tones in the feature panels, a lighter field colour to open the room. The change is total. Same footprint, completely different presence — one that looks like it was always meant to be this way.",
+    stats: [
+      { value: "7", label: "days on site" },
+      { value: "Full", label: "design consultation" },
+      { value: "Zero", label: "structural changes needed" },
+    ],
+    tags: ["Fireplace surround", "Finish carpentry", "Geometric accent walls", "Feature panelling", "Interior painting", "Mantel shelf"],
   },
 ];
-function Comparison({ project: p, reduceMotion }) {
+function Comparison({ project: p, reduceMotion, labelPrefix = "" }) {
   const [v, set] = useState(48);
+  const [activeBtn, setActiveBtn] = useState("compare");
   const wipe = useRef(null);
   useEffect(() => () => wipe.current?.kill(), [reduceMotion]);
-  const moveTo = (value) => {
+  const moveTo = (value, btn) => {
+    setActiveBtn(btn);
     wipe.current?.kill();
     if (reduceMotion) { set(value); return; }
     const progress = { value: v };
@@ -495,8 +564,8 @@ function Comparison({ project: p, reduceMotion }) {
           min="0"
           max="100"
           value={v}
-          onChange={(e) => { wipe.current?.kill(); set(Number(e.target.value)); }}
-          aria-label={`Compare ${p.room}`}
+          onChange={(e) => { wipe.current?.kill(); setActiveBtn(null); set(Number(e.target.value)); }}
+          aria-label={`${labelPrefix}Compare ${p.room}`}
           aria-valuetext={`${v}% before and ${100 - v}% after`}
         />
         <span className="drag-note">
@@ -505,30 +574,38 @@ function Comparison({ project: p, reduceMotion }) {
         </span>
       </div>
       <div className="comparison-tools">
-        <span>Original space → Finished space</span>
-        <div>
+        <span className="comparison-label">Original space → Finished space</span>
+        <div className="comparison-btns">
           <button
-            onClick={() => moveTo(100)}
-            aria-label={`Show before: ${p.room}`}
+            className={activeBtn === "before" ? "active" : ""}
+            onClick={() => moveTo(100, "before")}
+            aria-label={`${labelPrefix}Show before: ${p.room}`}
+            aria-pressed={activeBtn === "before"}
           >
             Before
           </button>
-          <span>/</span>
-          <button onClick={() => moveTo(0)} aria-label={`Show after: ${p.room}`}>
-            After
-          </button>
-          <span>/</span>
           <button
-            onClick={() => moveTo(50)}
-            aria-label={`Compare both: ${p.room}`}
+            className={activeBtn === "compare" ? "active" : ""}
+            onClick={() => moveTo(50, "compare")}
+            aria-label={`${labelPrefix}Compare both: ${p.room}`}
+            aria-pressed={activeBtn === "compare"}
           >
             Compare
+          </button>
+          <button
+            className={activeBtn === "after" ? "active" : ""}
+            onClick={() => moveTo(0, "after")}
+            aria-label={`${labelPrefix}Show after: ${p.room}`}
+            aria-pressed={activeBtn === "after"}
+          >
+            After
           </button>
         </div>
       </div>
     </div>
   );
 }
+
 function Work({ reduceMotion }) {
   return (
     <section className="work-section" id="our-work">
@@ -536,26 +613,35 @@ function Work({ reduceMotion }) {
         <div className="work-heading">
           <span className="small-label">A closer look</span>
           <h2 className="reveal-title">
-            Don’t just imagine it.
+            Real spaces.
             <br />
-            See the change.
+            Real results.
           </h2>
           <p>
-            Two spaces. A fresh start.
+            Two Anchorage projects, before and after.
             <br />
-            Explore the before and after.
+            Drag the slider — see every detail.
           </p>
         </div>
         {projects.map((p, i) => (
           <article className={`project project-${i}`} key={p.id}>
             <div className="project-story">
-              <span className="project-category">{p.room}</span>
+              <span className="project-eyebrow">{p.eyebrow}</span>
               <h3>
                 {p.title.map((l) => (
                   <span key={l}>{l}</span>
                 ))}
               </h3>
-              <p>{p.text}</p>
+              <p className="project-headline">{p.headline}</p>
+              <p className="project-body">{p.text}</p>
+              <div className="project-stats" aria-label="Project highlights">
+                {p.stats.map((s) => (
+                  <div key={s.label} className="project-stat">
+                    <strong>{s.value}</strong>
+                    <span>{s.label}</span>
+                  </div>
+                ))}
+              </div>
               <div className="project-tags">
                 {p.tags.map((t) => (
                   <span key={t}>{t}</span>
@@ -563,10 +649,10 @@ function Work({ reduceMotion }) {
               </div>
               <a
                 href="#contact"
-                className="project-link"
-                aria-label={`Discuss a project like ${p.room}`}
+                className="project-cta"
+                aria-label={`Start a project like ${p.room}`}
               >
-                <ArrowUpRight size={26} />
+                Start a similar project <ArrowUpRight size={17} />
               </a>
             </div>
             <Comparison project={p} reduceMotion={reduceMotion} />
@@ -653,17 +739,17 @@ function Approach({ reduceMotion }) {
               {
                 n: "01",
                 title: "Show us what you have in mind.",
-                text: "Send your list, location and a few photos. Tell us what isn’t working — and what you’d love to change.",
+                text: "Send your list, location and a few photos. Describe what isn’t working and what you’d love to change. There’s no such thing as too much detail — it helps us plan more accurately from the start.",
               },
               {
                 n: "02",
-                title: "Let’s work out the details.",
-                text: "Talk through the scope, materials, timing and estimate. Start with a plan you understand.",
+                title: "Let’s work out the details together.",
+                text: "We’ll talk through scope, materials, timing and a realistic estimate. You’ll understand exactly what’s planned, what it will cost and what to expect on site. No guesswork, no surprises.",
               },
               {
                 n: "03",
-                title: "Bring your space together.",
-                text: "Move from the plan to the work, then walk through the details together.",
+                title: "We bring your space together.",
+                text: "Work begins once you’re confident in the plan. When it’s done, we walk through the details with you — because the finish matters as much as the foundation.",
               },
             ].map((s) => (
               <article key={s.n}>
@@ -681,7 +767,7 @@ function Approach({ reduceMotion }) {
         <div className="page-width alaska-band-inner">
           <span className="small-label">
             <Mountain size={19} />
-            Alaska is home.
+            Anchorage is home.
           </span>
           <p>Let’s take care of yours.</p>
           <AlpineScene reduceMotion={reduceMotion} />
@@ -693,19 +779,27 @@ function Approach({ reduceMotion }) {
 const faqs = [
   [
     "What kinds of projects can I ask about?",
-    "Repairs, painting, drywall, finish carpentry and room updates are a good place to start. Share your project and we’ll confirm the scope, availability and whether specialist trades are needed.",
+    "Repairs, painting, drywall, finish carpentry and room updates are a good place to start. Kitchen and bathroom remodels, flooring, deck work, lighting and property maintenance are all in scope. Share your project and we’ll confirm the scope, availability and whether specialist trades are needed before work begins.",
   ],
   [
     "How do I get an estimate?",
-    "Call (907) 744-8725 or prepare an email request below. Include your location, a description of the work and photos if you have them. Some projects need an on-site look first.",
+    "Call (907) 891-5505 or prepare an email request using the form below. Include your location, a description of the work and photos if you have them — the more detail the better. Some projects need an on-site visit before we can give a firm number.",
   ],
   [
     "Do you work in my area?",
-    "Send your Alaska town or neighborhood. We’ll confirm service availability at your location before scheduling.",
+    "We serve Anchorage, Alaska and the surrounding area. Share your project location when you get in touch and we’ll confirm availability before scheduling anything.",
   ],
   [
-    "Can I combine several small repairs?",
-    "Send the whole list when you get in touch. That makes it easier to discuss the scope and plan the work together.",
+    "Can I combine several small repairs in one visit?",
+    "Absolutely — send the whole list when you get in touch. Batching smaller repairs into a single visit is often more efficient and more cost-effective. It also makes it easier to plan the work and agree on timing upfront.",
+  ],
+  [
+    "Do you work on commercial properties?",
+    "Yes. We handle maintenance and repair work for commercial properties in Anchorage. If you manage a building or run a business, get in touch and we can discuss a maintenance plan that fits your schedule and budget.",
+  ],
+  [
+    "How far in advance do I need to book?",
+    "It depends on the season and project size. Smaller repairs can often be scheduled within a week or two. Larger remodels or projects with multiple trades may need more lead time. Call or send your project details and we’ll give you an honest timeline.",
   ],
 ];
 function FAQ() {
@@ -746,13 +840,15 @@ function FAQ() {
   );
 }
 function Contact({ service, setService }) {
+  const [photos, setPhotos] = useState([]);
+  const [photoError, setPhotoError] = useState("");
   const [draft, setDraft] = useState(null),
     result = useRef(null);
   useEffect(() => setDraft(null), [service]);
   const prepare = (e) => {
     e.preventDefault();
     const d = new FormData(e.currentTarget),
-      text = `Hello Alaska Handyman Services,\n\nI’d like to discuss a project.\n\nName: ${d.get("name").trim()}\nEmail: ${d.get("email").trim()}\nPhone: ${d.get("phone").trim() || "Not provided"}\nLocation: ${d.get("location").trim()}\nService: ${service || "Let’s discuss"}\n\nProject details:\n${d.get("details").trim()}\n\nThank you!`;
+      text = `Hello Arctic Handyman Services LLC,\n\nI’d like to discuss a project.\n\nName: ${d.get("name").trim()}\nEmail: ${d.get("email").trim()}\nPhone: ${d.get("phone").trim() || "Not provided"}\nLocation: ${d.get("location").trim()}\nService: ${service || "Let’s discuss"}\n\nProject details:\n${d.get("details").trim()}\n\nPhotos to attach manually: ${photos.map(p => p.name).join(", ") || "None selected"}\n\nThank you!`;
     setDraft({
       text,
       url: `mailto:${EMAIL}?subject=${encodeURIComponent(`Project inquiry: ${service || "Home improvement"}`)}&body=${encodeURIComponent(text)}`,
@@ -775,7 +871,7 @@ function Contact({ service, setService }) {
             us where to start.
           </p>
           <a href={PHONE} className="contact-phone">
-            (907) 744-8725 <ArrowUpRight size={24} />
+            (907) 891-5505 <ArrowUpRight size={24} />
           </a>
           <a href={`mailto:${EMAIL}`} className="contact-email">
             {EMAIL}
@@ -783,7 +879,7 @@ function Contact({ service, setService }) {
           <div className="contact-mark">
             <Mountain size={27} strokeWidth={1.2} />
             <span>
-              Alaska Handyman Services
+              Arctic Handyman Services LLC
               <br />
               Built for a stronger tomorrow.
             </span>
@@ -861,6 +957,10 @@ function Contact({ service, setService }) {
                 placeholder="What needs fixing or changing?"
               />
             </label>
+            <label>Project photos (optional)<input type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" multiple aria-describedby="photo-help" onChange={(e) => { const files = Array.from(e.target.files || []); setDraft(null); if (files.length > 5 || files.some(f => f.size > 10 * 1024 * 1024)) { setPhotoError("Choose up to 5 photos, each under 10 MB."); setPhotos([]); e.target.value = ""; return; } setPhotoError(""); setPhotos(files); }} /></label>
+            <p id="photo-help" className="form-note">Optional: select up to 5 photos to reference in your request. Files stay on your device; attach them yourself when sending the email.</p>
+            {photoError && <p role="alert">{photoError}</p>}
+            {photos.length > 0 && <ul className="selected-photos">{photos.map((p, i) => <li key={i}>{p.name}</li>)}</ul>}
             <button className="button button-ink" type="submit">
               Prepare my project request <ArrowUpRight size={21} />
             </button>
@@ -905,8 +1005,8 @@ function Footer({ reduced, systemReduced, toggleMotion }) {
         <div className="footer-top">
           <div className="footer-logo">
             <img
-              src="/assets/logo.webp"
-              alt="Alaska Handyman Service — Built for a stronger tomorrow"
+              src="/assets/arctic-wordmark.svg"
+              alt="Arctic Handyman Services LLC"
               width="170"
               height="170"
               loading="lazy"
@@ -921,7 +1021,7 @@ function Footer({ reduced, systemReduced, toggleMotion }) {
           </a>
         </div>
         <div className="footer-bottom">
-          <span>© {new Date().getFullYear()} Alaska Handyman Services</span>
+          <span>© {new Date().getFullYear()} Arctic Handyman Services LLC</span>
           <nav aria-label="Footer navigation">
             <a href="#services">Services</a>
             <a href="#our-work">Our work</a>
@@ -1051,7 +1151,7 @@ export default function App() {
           scrollTrigger: { trigger: t, start: "top 92%", once: true },
         }),
       );
-      gsap.utils.toArray(".project-comparison").forEach((f) =>
+      gsap.utils.toArray(".work-section .project-comparison").forEach((f) =>
         gsap.from(f, {
           clipPath: "inset(0 8% 0 8%)",
           duration: 1.2,
@@ -1098,6 +1198,7 @@ export default function App() {
         systemReduced={systemReduced}
         toggleMotion={() => setMotionOff(!motionOff)}
       />
+      <a className="whatsapp-float" href="https://wa.me/19078915505" target="_blank" rel="noopener noreferrer" aria-label="Chat with Arctic Handyman Services LLC on WhatsApp"><svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" strokeWidth="1.7" aria-hidden="true"><path d="M21 11.5a9 9 0 0 1-13.3 7.9L3 21l1.6-4.7A9 9 0 1 1 21 11.5Z"/><path d="M8 7c-2 3 3 8 6 8l2-2-3-1-1 1-2-2 1-1-1-3Z"/></svg><span>WhatsApp</span></a>
       <div className="mobile-contact">
         <a href={PHONE}>
           <Phone size={16} />

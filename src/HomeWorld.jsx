@@ -5,9 +5,9 @@ import "./home-world.css";
 
 const details = [
   { name: "Repair", service: "Repairs & maintenance", icon: Wrench, title: "Make the everyday work better.", text: "The door that catches. The hardware that’s loose. Start with the details you use every day." },
-  { name: "Refresh", service: "Painting & drywall", icon: PaintRoller, title: "A fresh finish changes the feeling.", text: "Smooth walls and a considered color can give a familiar space a completely new outlook." },
+  { name: "Refresh", service: "Painting services", icon: PaintRoller, title: "A fresh finish changes the feeling.", text: "Smooth walls and a considered color can give a familiar space a completely new outlook." },
   { name: "Refine", service: "Carpentry & trim", icon: Hammer, title: "Good details bring it together.", text: "Trim, shelving and thoughtful woodwork add character where you’ll notice it most." },
-  { name: "Reimagine", service: "Room improvements", icon: House, title: "See the possibility in your space.", text: "Bring your ideas for a room refresh. We’ll help you work out the practical next steps." },
+  { name: "Reimagine", service: "Bathroom remodeling", icon: House, title: "See the possibility in your space.", text: "Bring your ideas for a room refresh. We’ll help you work out the practical next steps." },
 ];
 
 function HouseIllustration() {
